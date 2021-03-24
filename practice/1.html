@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个练习</title>
+</head>
+<body>
+<script>
+    // 正常函数
+    function add(a, b, c) {
+        console.log(a + b + c);
+    }
+
+    add(2, 3, 5);
+
+    // 匿名函数
+    let app = function (a, b) {
+        console.log(a * b);
+    }
+
+    app(4, 8);
+
+    // 箭头函数
+    let app2 = (a, b) => console.log(a * b);
+    app2(6, 7);
+
+    let app3 = function (a, b) {
+        console.log(a + b);
+        console.log(a * b);
+    }
+    app3(10, 6);
+
+    let app4 = (a, b) => {
+        console.log(a + b);
+        console.log(a * b);
+    }
+
+    app4(6, 9);
+
+    // 如果函数体中只有一条语句 则{}可以省略
+    let app5 = (x, y) => console.log(x + y);
+    app5(3, 4);
+
+    // 如果函数只有一个参数，则可以省略()
+    let app6 = x => console.log(x * 2);
+    app6(4);
+
+    // 只有return
+    let app7 = (a, b) => a * b;
+    console.log(app7(12, 5));
+
+    let app8 = a => a * 5;
+    console.log(app8(30));
+
+    let app9 = () => console.log('vue');
+    app9();
+
+
+    let student = {
+        username: "小黑",
+        app: function () {
+            // 当前this 指向的是当前的student对象
+            console.log(this);
+        }
+    }
+    student.app();
+    let user = {
+        username: "小白",
+        app: function () {
+            // 回调函数 this的指向会被改变，不会再指向当前user对象了
+            setTimeout(function () {
+                // 获取不到this对象了，在回调函数中this的指向会被改变
+                console.log(this.username);
+            }, 1000)
+        }
+    }
+    user.app();
+    let employee = {
+        username: "小黄",
+        app: function () {
+            // 回调函数中this的指向会被改变
+            setTimeout(() => {
+                // 在箭头函数中this的指向 不会被改变
+                console.log(this.username)
+            }, 1000)
+        }
+    }
+
+    employee.app()
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第九个练习</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="username">
+    <br>
+    父组件的参数：{{username}}
+    <hr>
+    <!--    <first v-bind:test="username"></first>-->
+    <first :test="username"></first>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    // 子组件
+    let first = {
+        template: `
+          <div>子组件接收的父组件的用户名：{{ test }}</div>
+        `,
+        props: ["test"]
+    }
+    // 父组件
+    new Vue({
+        el: '#app',
+        data: {
+            username: "",
+        },
+        components: {
+            "first": first,
+        },
+    })
+</script>
+</body>
+</html>

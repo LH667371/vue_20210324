@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第七个练习</title>
+    <style>
+        .a {
+            color: red;
+        }
+
+        .b {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <com user="tom"></com>
+    <com color="a" user="jack"></com>
+    <com color="b" user="marry"></com>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    let com = {
+        template: `
+          <div :class="color">
+          这是我的com组件==={{ user }}
+          </div>
+        `,
+        props: ["color", "user"],
+    }
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            'com': com,
+        },
+    })
+</script>
+</body>
+</html>

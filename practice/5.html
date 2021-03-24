@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第五个练习</title>
+</head>
+<body>
+<div id="app">
+    <first></first>
+    <hr>
+    <h1>{{username}}</h1>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    let first = {
+        template: `
+          <div>
+          <span>{{ username }}</span>
+          <h3 @click="change">{{ count }}</h3>
+          </div>
+        `,
+        data: function () {
+            return {
+                username: '刘亦菲',
+                count: 30,
+            }
+        },
+        methods: {
+            change() {
+                this.count--;
+            },
+        },
+    }
+    // 全局组件 一般情况下不使用全局组件
+    Vue.component('first', first);
+
+    new Vue({
+        el: '#app',
+        data: {
+            username: '赵丽颖',
+        },
+    })
+</script>
+</body>
+</html>
